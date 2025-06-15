@@ -32,7 +32,7 @@ class Details extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        backgroundColor: Colors.deepPurple.shade300,
+        backgroundColor: const Color.fromARGB(255, 184, 20, 18),
       ),
       body: Container(
         padding: const EdgeInsets.all(8.0),

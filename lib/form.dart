@@ -33,7 +33,7 @@ class _MyFormState extends State<MyForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple.shade300,
+        backgroundColor: const Color.fromARGB(255, 224, 69, 8),
         title: const Text("Formulario Distribuidor"),
         centerTitle: true,
       ),
