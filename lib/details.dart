@@ -1,90 +1,75 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class Details extends StatelessWidget {
-  Details(
-      {super.key, required this.productName, required this.productDescription});
+  final String idDistribuidor;
+  final String nombreDistribuidor;
+  final String costoEntrega;
+  final String entregas;
+  final String telefono;
+  final String correoElectronico;
+  final String ciudad;
 
-  String productName, productDescription;
+  const Details({
+    Key? key,
+    required this.idDistribuidor,
+    required this.nombreDistribuidor,
+    required this.costoEntrega,
+    required this.entregas,
+    required this.telefono,
+    required this.correoElectronico,
+    required this.ciudad,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            "Details",
-          ),
-          //Pop and navigate to previous screen
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back)),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Detalles del Distribuidor"),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
         ),
-        body: Container(
-          padding: const EdgeInsets.all(4.0),
-          child: ListView(
-            children: [
-              //Dynamic Tile
-              ListTile(
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1.0, color: Colors.grey.shade300)),
-                leading: IconButton(
-                  icon: const Icon(Icons.bookmark_added_rounded,
-                      color: Colors.blueAccent),
-                  onPressed: () {},
-                ),
-                title: Text(
-                  productName,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 18.0),
-                ),
-                subtitle: Text(productDescription),
-                trailing: const Icon(
-                  Icons.delete,
-                  color: Colors.grey,
+        backgroundColor: Colors.deepPurple.shade300,
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            ListTile(
+              shape: RoundedRectangleBorder(
+                side: BorderSide(width: 1.0, color: Colors.grey.shade300),
+              ),
+              leading: const Icon(Icons.person, color: Colors.blueAccent),
+              title: const Text(
+                "Información del Distribuidor",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  '''
+ID Distribuidor: $idDistribuidor
+Nombre: $nombreDistribuidor
+Teléfono: $telefono
+Correo Electrónico: $correoElectronico
+Ciudad: $ciudad
+Costo de Entrega: $costoEntrega
+Número de Entregas: $entregas
+''',
+                  style: const TextStyle(height: 1.5),
                 ),
               ),
-
-              //Static Tiles for design
-              ListTile(
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1.0, color: Colors.grey.shade300)),
-                leading: IconButton(
-                  icon: const Icon(Icons.shopping_bag_outlined,
-                      color: Colors.blueAccent),
-                  onPressed: () {},
-                ),
-                title: const Text(
-                  "Bag",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-                ),
-                subtitle: const Text("Brown Color Bag with straps"),
-                trailing: const Icon(
-                  Icons.delete,
-                  color: Colors.grey,
-                ),
+              trailing: const Icon(
+                Icons.delete,
+                color: Colors.grey,
               ),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1.0, color: Colors.grey.shade300)),
-                leading: IconButton(
-                  icon: const Icon(Icons.chair, color: Colors.blueAccent),
-                  onPressed: () {},
-                ),
-                title: const Text(
-                  "Chair",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-                ),
-                subtitle: const Text("Wooden swinging Chair"),
-                trailing: const Icon(
-                  Icons.delete,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
